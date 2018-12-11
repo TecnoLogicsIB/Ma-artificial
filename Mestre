@@ -1,0 +1,16 @@
+#include <SoftwareSerial.h>  // llibreria per utilitzar qualsevol pin digital per la comunicació sèrie
+SoftwareSerial BT(11, 10); // pins RX i TX a que s'ha connectat el mòdul bluetooth
+int consigna = 150;  // valor de la lectura del sensor que defineix la dada a enviar per bluetooth (depén de l'usuari)
+
+void setup()
+{
+  BT.begin (9600); // inicia la comunicació amb el bluetooth per enviar les dades
+}
+
+void loop()
+{
+  int valorSensor = analogRead(A0);     // llegeix el pin de connexió del sensor i desa el valor en la variable "valorSensor"
+  if (valorSensor < consigna) { BT.write ('A'); }     // si valorSensor és < al valor establert com a consigna, envia A pel port sèrie
+  else { BT.write ('B'); }              // si valorSensor no és < al valor establert com a consigna, envia B pel port sèrie
+  delay(10);                            // petita pausa de 10 ms abans de tornar a executar les instruccions del bucle
+}
