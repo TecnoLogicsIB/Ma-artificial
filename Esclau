@@ -1,0 +1,25 @@
+#include <SoftwareSerial.h>  // llibreria per utilitzar qualsevol pin digital per la comunicació sèrie
+#include <Servo.h>  // llibreria pel control de servomotors
+
+SoftwareSerial BT(11, 10); // pins RX i TX a que s'ha connectat el mòdul bluetooth
+Servo miServo;
+char dada;  // variable que contindrà la dada a enviar per bluetooth
+int posicio1 = 50;
+int posicio2 = 175;
+
+void setup() {
+  miServo.attach(6);  // assigna senyals servo al pin (els tres servos estan connectat al mateix pin)
+  BT.begin(9600);  // inicia la comunicació amb el bluetooth
+}
+void loop() {
+  if (Serial.available() > 0) {
+    dada = Serial.read();
+  }
+  if (dada == 'A') {
+    miServo.write(posicio1);
+  }
+  if (dada == 'B') {
+    miServo.write(posicio2);
+  }
+  delay(10);  // petita pausa per estabilitzar
+}
