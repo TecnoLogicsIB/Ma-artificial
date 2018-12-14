@@ -1,5 +1,5 @@
 /* TR Mà artificial. Versió alfa (probes) 2018-19
-https://tecnologicsib.wixsite.com/artificialhandtr/blog/programa-de-l-emissor-versi%C3%B3-alfa */
+https://tecnologicsib.wixsite.com/artificialhandtr/blog/programa-de-l-emissor-versió-alfa */
 
 // Valors amb que treballem:
 const int sensor = A0;  // pin de connexió del sensor
